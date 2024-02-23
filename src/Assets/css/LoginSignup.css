@@ -1,0 +1,124 @@
+/* .loginsignup {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #d2e8ca;
+}
+
+.loginsignup-container {
+    height:800px;
+    width: 500px;
+    background: rgb(255, 255, 255);
+    padding: 30px 60px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.loginsignup-container h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.loginsignup-fields {
+    margin-bottom: 20px;
+}
+
+.loginsignup-fields input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.loginsignup-container button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background: rgb(124, 176, 124);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.loginsignup-container button:hover {
+    background: #80a780;
+}
+
+.loginsignup-login {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.loginsignup-agree {
+    display: flex;
+    align-items: center;
+}
+
+.loginsignup-agree input {
+    margin-right: 10px;
+}
+
+.loginsignup-agree p {
+    margin: 0;
+    font-size: 14px;
+} */
+
+.loginsignup {
+    width: 100%;
+    height: 120vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #d2e8ca;
+}
+
+.loginsignup-container {
+    width: 80%;
+    /* Adjusted width */
+    max-width: 500px;
+    /* Added max-width to limit container width */
+    background: rgb(255, 255, 255);
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.loginsignup-container h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.loginsignup-fields {
+    margin-bottom: 20px;
+}
+
+.loginsignup-fields input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.loginsignup-container button {
+    width: 50%;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background: rgb(124, 176, 124);
+    color: rgb(14, 13, 13);
+    font-size: 19px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.loginsignup-container button:hover {
+    background: #80a780;
+}

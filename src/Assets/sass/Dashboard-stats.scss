@@ -1,0 +1,38 @@
+/* DashboardStats.scss */
+
+.container {
+    text-align: center;
+}
+
+.dashticket {
+    padding: 1rem;
+    border: 5px solid white;
+}
+
+/* Media query for small screens */
+@media (max-width: 576px) {
+    .row-cols-sm-2 {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .dashticket {
+        flex-basis: calc(50% - 20px);
+        /* Adjust as needed */
+        margin: 10px;
+    }
+}
+
+/* Media query for medium screens */
+@media (min-width: 576px) and (max-width: 768px) {
+    .row-cols-md-4 {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .dashticket {
+        flex-basis: calc(25% - 20px);
+        /* Adjust as needed */
+        margin: 10px;
+    }
+}

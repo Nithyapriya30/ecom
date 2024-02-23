@@ -1,0 +1,220 @@
+{
+  "product": [
+    {
+      "id": "2",
+      "ProductFullName": "Shirt",
+      "SubName": "Dress",
+      "Category": "Men's dress",
+      "Offer": "50%",
+      "Size": [
+        "S,M,XL,XXL,L"
+      ],
+      "Colors": "green",
+      "Prize": 500,
+      "sellerid": 1,
+      "Brand": "Twinbirds",
+      "Pattern": "Solid",
+      "Origin": "India",
+      "productimage": "https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHNoaXJ0fGVufDB8fDB8fHww"
+    },
+    {
+      "id": "b12b",
+      "ProductFullName": "saree",
+      "SubName": "grl",
+      "Category": "Womens",
+      "Offer": "50%",
+      "Size": [
+        "none"
+      ],
+      "Colors": "pink",
+      "Prize": "5000000",
+      "Brand": "silk ",
+      "Pattern": "boat neck",
+      "Origin": "ge",
+      "productimage": "https://images.unsplash.com/photo-1599775208562-70c453a83d4d?dpr=1&h=294&w=294&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8STN6by1fcjdWblF8fGVufDB8fHx8fA%3D%3D",
+      "Description": "jnj"
+    }
+  ],
+  "Customer": [
+    {
+      "id": "1",
+      "Name": "Nithya",
+      "email": "nithya@gmail.com",
+      "Phone": 6381180092,
+      "Password": "Nithya@7846"
+    }
+  ],
+  "Seller": [
+    {
+      "id": "21",
+      "Name": "Nithya",
+      "email": "nithya@gmail.com",
+      "Phone": 6381180092,
+      "Password": "Nithya@7846",
+      "company name": "Nige Textile",
+      "Company Register Number": "123456789"
+    }
+  ],
+  "Admin": [
+    {
+      "id": "31",
+      "email": "admin@gmail.com",
+      "Password": "Admin@123"
+    }
+  ],
+  "carts": [
+    {
+      "id": "1",
+      "customerid": 1,
+      "cartproducd": [
+        {
+          "productid": 101,
+          "quantity": 2
+        },
+        {
+          "productid": 102,
+          "quantity": 1
+        }
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "id": "1",
+      "customerid": 1,
+      "orderedproducts": [
+        {
+          "productid": 101,
+          "quantity": 2
+        },
+        {
+          "productid": 102,
+          "quantity": 1
+        }
+      ],
+      "totalamount": 150.25,
+      "paymentmethod": "credit_card"
+    }
+  ],
+  "Wishlist": [
+    {
+      "id": "1",
+      "image": "https://www.dishisjewels.com/blog/wp-content/uploads/2023/09/6-4.jpg",
+      "name": "goldearing",
+      "price": "$100"
+    },
+    {
+      "id": "2",
+      "image": "https://images.cltstatic.com/media/product/350/AE00655-SS0000-meant-to-be-heart-earrings-in--silver-prd-1-base.jpg",
+      "name": "silver",
+      "price": "$100"
+    }
+  ],
+  "student": [
+    {
+      "id": "1",
+      "username": "NITHYA",
+      "email": "nithya@gmail.com",
+      "phonenumber": "7956677951"
+    },
+    {
+      "userid": "2",
+      "username": "Preethi",
+      "email": "preethi@gmail.com",
+      "phonenumber": "9566779515",
+      "id": "d32f"
+    },
+    {
+      "id": "3",
+      "username": "Harish",
+      "email": "Harish@gmail.com",
+      "phonenumber": "8767873456"
+    },
+    {
+      "id": "4",
+      "username": "Priya",
+      "email": "priya@gmail.com",
+      "phonenumber": "9765789453"
+    }
+  ],
+  "custprofile": [
+    {
+      "id": "982a",
+      "name": "preethi",
+      "address": "45/40,Thillai nagar,second cross,ponnamapet",
+      "mobile": "6381180091",
+      "state": "bglr",
+      "email": "cust@gmail.com",
+      "password": "Cust@123",
+      "photo": "https://images.pexels.com/photos/10222192/pexels-photo-10222192.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1.jpg",
+      "role": "customer"
+    },
+    {
+      "id": "3afc",
+      "name": "XXX",
+      "address": "lkhaihdcwcnl",
+      "mobile": "6380037534",
+      "state": "tn",
+      "email": "abcd@gmail.com",
+      "password": "xxx@123",
+      "photo": "https://images.pexels.com/photos/10222192/pexels-photo-10222192.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1.jpg",
+      "role": "customer"
+    },
+    {
+      "id": "24d9",
+      "name": "sruthi",
+      "address": "45/40,Thillai nagar,second cross,ponnamapet",
+      "mobile": "9894400537",
+      "state": "nfslw",
+      "email": "sruthi@gmail.com",
+      "password": "Sruthi@123",
+      "photo": "https://images.pexels.com/photos/10222192/pexels-photo-10222192.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1.jpg",
+      "role": "customer"
+    },
+    {
+      "id": "439b",
+      "name": "Demo",
+      "address": "hdfdd",
+      "mobile": "6381180091",
+      "state": "fff",
+      "email": "demo@gmail.com",
+      "password": "Demo@123",
+      "photo": "https://images.pexels.com/photos/10222192/pexels-photo-10222192.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1.jpg",
+      "role": "customer"
+    },
+    {
+      "id": "8f40",
+      "name": "Nithiya",
+      "address": "hloooo",
+      "mobile": "6380071267",
+      "state": "tn",
+      "email": "nithiya@gmail.com",
+      "password": "Nithya@123",
+      "photo": "https://i0.wp.com/newdoorfiji.com/wp-content/uploads/2018/03/profile-img-1.jpg?ssl=1.jpg",
+      "role": "customer"
+    },
+    {
+      "id": "01b4",
+      "name": "Admin",
+      "address": "hloooo",
+      "mobile": "6380071267",
+      "state": "yn",
+      "email": "admin@gmail.com",
+      "password": "Admin@123",
+      "photo": "https://i0.wp.com/newdoorfiji.com/wp-content/uploads/2018/03/profile-img-1.jpg?ssl=1.jpg",
+      "role": "admin"
+    },
+    {
+      "id": "c49d",
+      "name": "sxxxx",
+      "address": "hloooo",
+      "mobile": "6380071267",
+      "state": "th",
+      "email": "row@gmail.com",
+      "password": "Rowsxx@123",
+      "photo": "https://i0.wp.com/newdoorfiji.com/wp-content/uploads/2018/03/profile-img-1.jpg?ssl=1.jpg",
+      "role": "seller"
+    }
+
+  ]
+}
