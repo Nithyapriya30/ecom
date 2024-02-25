@@ -53,8 +53,8 @@ const ProductDisplay = (props) => {
     borderRadius: '5px',
     cursor: 'pointer',
     transition: 'all 0.3s ease',
-    marginRight:'352px',
-    marginTop: '10px'
+    marginTop:'20px',
+    marginRight:'572px',
 }}>
     ADD TO WISHLIST
 </button>
@@ -68,7 +68,7 @@ const ProductDisplay = (props) => {
                 </div>
             </div>
             <div className="productdisplay-right-description">
-                The long-sleeve design is perfect for those cooler days or nights, while the button-up closure makes it easy to take on and off. The plaid design is perfect for any casual occasion, whether going to a barbecue or running errands.
+                The long-sleeve design is perfect for those cooler days or nights, while the button-up closure.
             </div>
             <div className="productdisplay-right-size">
 
@@ -82,12 +82,15 @@ const ProductDisplay = (props) => {
                         <div className={selectedSize === 'XXL' ? 'selected-size' : ''} onClick={() => handleClick('XXL')}>XXL</div>
                     </div>
                 </div>
+                <div className='buttons'>
                 <button onClick={()=>{addToCart(product.id)}}>ADD TO CART</button>
                 &nbsp;&nbsp;
 
                <Link to="/billingaddress">
                      <button>BUY NOW</button>
                 </Link>
+                </div>
+               
 
                 <p className='productdisplay-right-category'><span>Category:</span>Women, T-shirt,Crop top</p>
                  <p className='productdisplay-right-category'><span>Tags:</span>Modern,Latest</p>

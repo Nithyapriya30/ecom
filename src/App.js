@@ -31,29 +31,24 @@ import SellerNav from "./components/seller/SellerNav.js";
 import OrderManagement from "./components/seller/OrderManagement.js";
 import AdminNav from "./components/admin/AdminNav.js";
 import HomePage from "./Pages/HomePage.js";
+import QueryResponseTable from "./components/redux/Query.js";
+import RespondtoQuery from "./components/seller/RespondtoQuery.js";
+import ProductCardCollection from "./components/NewCollections/NewCollection.js";
+import CollectionProduct from "./Pages/CollectionProduct.js";
+import OrderManagementSel from "./Pages/OrderManagement.js";
 
 function App() {
   return (
-    
     <div className="App">
       <ShopContextProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/homepage" element={<HomePage />} />
-          <Route
-            path="/mens"
-            element={<ShopCategory banner={men_banner} category="men" />}
-          />
-          <Route
-            path="/womens"
-            element={<ShopCategory banner={women_banner} category="women" />}
-          />
-          <Route
-            path="/kids"
-            element={<ShopCategory banner={kids_banner} category="kid" />}
-          />
+          <Route path="/mens" element={<ShopCategory banner={men_banner} category="men" />} />
+          <Route path="/womens" element={<ShopCategory banner={women_banner} category="women" />}/>
+          <Route path="/kids" element={<ShopCategory banner={kids_banner} category="kid" />} />
           <Route path="/product" element={<Product />}>
-            <Route path=":productId" element={<Product />} />
+          <Route path=":productId" element={<Product />} />
           </Route>
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<LoginSignup />} />
@@ -64,51 +59,19 @@ function App() {
           <Route path="/wishlist" element={<Wish />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/addpdt" element={<ParentComponent />} />
-          <Route path="/ordmgt" element={<OrderManagement />} />
+          <Route path="/ordmgt" element={<OrderManagementSel/>} />
           <Route path="/sellerdashboard" element={<SellerDashboard />} />
           <Route path="/admindashboard" element={<AdminDash />} />
           <Route path="/usermgt" element={<UserManagement />} />
           <Route path="/pdtmgt" element={<ProductManagement />} />
           <Route path="/loginform" element={<LoginForm />} />
           <Route path="/signup" element={<LoginSignup />} />
-          <Route path='/cart' element={<Cart/>}></Route>
-
-          
+          <Route path="/cart" element={<Cart />}></Route>
+          <Route path="/query" element={<RespondtoQuery />}></Route>
+          <Route path="/pdtcat" element={<CollectionProduct />}></Route>
         </Routes>
       </ShopContextProvider>
     </div>
-
-    /*   <div>
-      <HomePage/>
-    </div>
- */
-    // <div>
-    //   <LoginSignup/>
-    // </div>
-
-    // <div>
-    //   <ParentComponent/>
-    // </div>
-
-    /* <div>
-  <UserManagement/>
-</div> */
-
-    // <div>
-    //   <AdminDash/>
-    // </div>
-
-    // <div>
-    //   <LoginForm/>
-    // </div>
-
-    // <div>
-    //   <ProductManagement/>
-    // </div>
-
-    // <div>
-    //   <SellerDashboard/>
-    // </div>
   );
 }
 export default App;

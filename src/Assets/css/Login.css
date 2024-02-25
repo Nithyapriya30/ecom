@@ -41,3 +41,29 @@
     color: red;
     font-size: 0.8rem;
 }
+.password-input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.password-input-container button {
+    position: absolute;
+    right: 2px;
+    top: 5%;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

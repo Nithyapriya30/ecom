@@ -13,16 +13,16 @@ function Home()
 {
   return (
     <div>
-    <Header/>
-    <MyCarousel/>
-    <PopularSection/>
-    <Collectionprop />
-    <Cardhold/>  
-    <Blog/>
-    <AboutSection />
-    <Testimonials/>
-    <Footer/>
+      <Header />
+      <MyCarousel />
+      <PopularSection />
+      <Collectionprop />
+      <Cardhold />
+      <Blog />
+      <AboutSection />
+      <Testimonials />
+      <Footer />
     </div>
-  )
+  );
 }
 export default Home;

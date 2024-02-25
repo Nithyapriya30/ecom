@@ -18,7 +18,7 @@ function ModalComponent(props) {
   const [description, setDescription] = useState("");
   const [errors, setErrors] = useState({});
 
-  const categories = ["Kitchen appliance", "Kits", "Womens", "Mens"];
+  const categories = [ "Kids", "Womens", "Men"];
 
   useEffect(() => {
     if (!props.show) {

@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import { Breadcrumb, Form } from "react-bootstrap";
 import "../../Assets/css/LoginSignup.css";
 import { Link } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { InputGroup } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addUserToServer } from "../../slice/ProfileSlice";
 
 const LoginSignup = () => {
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: "",
@@ -99,11 +104,6 @@ const LoginSignup = () => {
         return "Mobile number should contain only numeric characters";
       }
 
-      // Add prefix validation if needed
-      // For example, if mobile numbers should start with a specific prefix
-      // if (!value.startsWith('+91')) {
-      //     return 'Mobile number should start with +91';
-      // }
     }
 
     return ""; // No errors
@@ -230,6 +230,8 @@ const LoginSignup = () => {
               </Form.Control.Feedback>
             </Form.Group>
 
+           
+
             <Form.Group
               className="mb-3"
               controlId="password"
@@ -238,16 +240,23 @@ const LoginSignup = () => {
               <Form.Label>
                 Password <span className="star text-danger">*</span>
               </Form.Label>
-              <Form.Control
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                isInvalid={!!errors.password}
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.password}
-              </Form.Control.Feedback>
+              <InputGroup>
+                <Form.Control
+                  type={passwordVisible ? "text" : "password"} // Use passwordVisible state here
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  isInvalid={!!errors.password}
+                />
+                <InputGroup.Text>
+                  <span onClick={() => setPasswordVisible(!passwordVisible)}>
+                    {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+                  </span>
+                </InputGroup.Text>
+                <Form.Control.Feedback type="invalid">
+                  {errors.password}
+                </Form.Control.Feedback>
+              </InputGroup>
             </Form.Group>
 
             <Form.Group
@@ -270,7 +279,10 @@ const LoginSignup = () => {
               </Form.Control.Feedback>
             </Form.Group>
 
-            <button type="submit">Submit</button>
+            <div className="text-center">
+              
+              <button type="submit">Submit</button>
+            </div>
           </Form>
         </div>
       </div>

@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link} from 'react-router-dom'; 
+import cart_icon from "../../Assets/images/img/cart_icon.png"
 import { ShopContext } from '../../context/ShopContext';
-const MyNavbar = () => {
-  const [menu, setMenu] = useState("home");
-  const{getTotalCartItems}=useContext(ShopContext)
 
+
+const MyNavbarr = () => {
+  const [menu, setMenu] = useState("home");
   return (
     
     <div> 
@@ -31,9 +32,6 @@ const MyNavbar = () => {
                 <Link to='/cart' style={{ color: 'black', textDecoration: 'none' }}>
                     <i className="fas fa-shopping-cart" style={{ marginRight: '6px' }}></i>
                 </Link>
-                <span className="badge-pill badge-danger position-absolute start-100 translate-middle me-4">
-                    {getTotalCartItems()}
-                </span>
             </div>
             </li>
                 <li className="nav-item me-3 border-0 position-relative">
@@ -58,4 +56,4 @@ const MyNavbar = () => {
   );
 }
 
-export default MyNavbar;
+export default MyNavbarr;

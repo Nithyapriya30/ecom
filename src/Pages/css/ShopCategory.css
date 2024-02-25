@@ -1,7 +1,6 @@
 .shopcategory-banner {
     display: block;
     margin: 80px auto;
-    /* Center the banner and add top and bottom margin */
     width: 82%;
 }
 
@@ -24,12 +23,9 @@
 
 .shopcategory-products {
     margin: 40px 20px;
-    /* Center the products and remove side margins */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    /* Responsive grid */
     gap: 30px;
-    /* Adjusted gap */
 }
 .shopcategory-loadmore{
     display: flex;

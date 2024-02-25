@@ -1,355 +1,370 @@
-/* import React, { useState } from "react";
-import "../App.css";
-import {
-  Form,
-  Button,
-  Container,
-  Row,
-  Col,
-  Modal,
-  Card,
-} from "react-bootstrap";
+// import React, { useState } from "react";
+// import { Button, Card, Container } from "react-bootstrap";
 
-const CreditCardForm = () => {
-  const [cardNum, setCardNum] = useState("");
-  const [expiry, setExpiry] = useState("");
-  const [ccv, setCcv] = useState("");
-  const [cardNumError, setCardNumError] = useState("");
-  const [expiryError, setExpiryError] = useState("");
-  const [ccvError, setCcvError] = useState("");
-  const [showModal, setShowModal] = useState(false);
+// const CreditCardForm = () => {
+//   const [cardnum, setCardnum] = useState("");
+//   const [expiry, setExpiry] = useState("");
+//   const [ccv, setCcv] = useState("");
+//   const [cardnumError, setCardnumError] = useState("");
+//   const [expiryError, setExpiryError] = useState("");
+//   const [ccvError, setCcvError] = useState("");
+//   const [paymentSuccess, setPaymentSuccess] = useState(false);
 
+//   const validateCardNumber = (value) => {
+//     var cardNumRegex = /^\d{16}$/;
 
+//     if (!value.trim()) {
+//       return "Card Number is required.";
+//     } else if (!cardNumRegex.test(value)) {
+//       return "Invalid Card Number.";
+//     } else {
+//       return "";
+//     }
+//   };
 
+//   const validateExpiryDate = (value) => {
+//     if (!value.trim()) {
+//       return "Expiry Date is required.";
+//     } else {
+//       const today = new Date();
+//       const [inputYear, inputMonth] = value.split("-");
+//       const inputDate = new Date(inputYear, inputMonth - 1);
 
-  const validateCardNumber = () => {
-    const cardNumRegex = /^\d{16}$/;
+//       if (inputDate < today) {
+//         return "Expiry Date cannot be a past date.";
+//       } else {
+//         return "";
+//       }
+//     }
+//   };
 
-    if (!cardNum.trim()) {
-      setCardNumError("Card Number is required.");
-    } else if (!cardNumRegex.test(cardNum)) {
-      setCardNumError("Invalid Card Number.");
-    } else {
-      setCardNumError("");
-    }
-  };
+//   const validateCCV = (value) => {
+//     var ccvRegex = /^\d{3}$/;
 
-  const validateExpiryDate = () => {
-    const today = new Date();
-    today.setDate(1);
+//     if (!value.trim()) {
+//       return "CCV is required.";
+//     } else if (!ccvRegex.test(value)) {
+//       return "Invalid CCV.";
+//     } else {
+//       return "";
+//     }
+//   };
 
-    if (!expiry.trim()) {
-      setExpiryError("Expiry Date is required.");
-    } else {
-      const [inputYear, inputMonth] = expiry.split("-");
-      const inputYearNum = parseInt(inputYear, 10);
-      const inputMonthNum = parseInt(inputMonth, 10);
+//   const handleCardnumChange = (e) => {
+//     const value = e.target.value;
+//     setCardnum(value);
+//     setCardnumError(validateCardNumber(value));
+//   };
 
-      if (
-        inputYearNum < today.getFullYear() ||
-        (inputYearNum === today.getFullYear() &&
-          inputMonthNum < today.getMonth() + 1)
-      ) {
-        setExpiryError("Expiry Date cannot be a past date.");
-      } else {
-        setExpiryError("");
-      }
-    }
-  };
+//   const handleExpiryChange = (e) => {
+//     const value = e.target.value;
+//     setExpiry(value);
+//     setExpiryError(validateExpiryDate(value));
+//   };
 
-  const validateCCV = () => {
-    const ccvRegex = /^\d{3}$/;
+//   const handleCcvChange = (e) => {
+//     const value = e.target.value;
+//     setCcv(value);
+//     setCcvError(validateCCV(value));
+//   };
 
-    if (!ccv) {
-      setCcvError("CCV is required.");
-    } else if (!ccvRegex.test(ccv)) {
-      setCcvError("Invalid CCV. CCV must be a 3-digit number.");
-    } else {
-      setCcvError("");
-    }
-  };
+//   const validateAndSubmit = () => {
+//     const cardnumValidationError = validateCardNumber(cardnum);
+//     const expiryValidationError = validateExpiryDate(expiry);
+//     const ccvValidationError = validateCCV(ccv);
 
-  
+//     setCardnumError(cardnumValidationError);
+//     setExpiryError(expiryValidationError);
+//     setCcvError(ccvValidationError);
 
-  const handleSubmit = () => {
-    validateCardNumber();
-    validateExpiryDate();
-    validateCCV();
-    console.log(cardNumError, expiryError, ccvError);
-    if (!cardNumError && !expiryError && !ccvError) {
-      setShowModal(true);
-    } else {
-      setShowModal(false);
-    }
-  }; 
+//     if (
+//       !cardnumValidationError &&
+//       !expiryValidationError &&
+//       !ccvValidationError
+//     ) {
+//       // If there are no validation errors, show payment success message
+//       setPaymentSuccess(true);
+//     }
+//   };
 
+//   return (
+//     <Container>
+//       <Card>
+//         <Card.Header>Enter Card Details</Card.Header>
+//         <Card.Body>
+//           {!paymentSuccess ? (
+//             <form>
+//               <div className="mb-3">
+//                 <label className="form-label">
+//                   Card Number
+//                   <span className="star" style={{ color: "red" }}>
+//                     *
+//                   </span>
+//                 </label>
+//                 <input
+//                   type="tel"
+//                   className="form-control"
+//                   value={cardnum}
+//                   onChange={handleCardnumChange}
+//                   style={{ width: "200px" }}
+//                 />
+//                 <div className="text-danger">{cardnumError}</div>
+//               </div>
 
+//               <div className="mb-3">
+//                 <label className="form-label">
+//                   Expiry Date
+//                   <span className="star" style={{ color: "red" }}>
+//                     *
+//                   </span>
+//                 </label>
+//                 <input
+//                   type="month"
+//                   className="form-control"
+//                   value={expiry}
+//                   onChange={handleExpiryChange}
+//                   style={{ width: "200px" }}
+//                 />
+//                 <div className="text-danger">{expiryError}</div>
+//               </div>
 
+//               <div className="mb-3">
+//                 <label className="form-label">
+//                   CCV
+//                   <span className="star" style={{ color: "red" }}>
+//                     *
+//                   </span>
+//                 </label>
+//                 <input
+//                   type="tel"
+//                   className="form-control"
+//                   value={ccv}
+//                   onChange={handleCcvChange}
+//                   style={{ width: "100px" }}
+//                 />
+//                 <div className="text-danger">{ccvError}</div>
+//               </div>
 
-  return (
-    <Container>
-      <Row className="justify-content-center mt-5">
-        <Col md={6}>
-          <Card className="p-4  mt-4">
-            <Form className="mt-4" onSubmit={handleSubmit}>
-              <Row className="mb-3">
-                <Col>
-                  <div style={{ textAlign: "start" }}>
-                    <Form.Label>Card Number</Form.Label>
-                  </div>
+//               <div className="mb-3 form-check">
+//                 <input
+//                   type="checkbox"
+//                   className="form-check-input"
+//                   id="termsCheckbox"
+//                   checked
+//                 />
+//                 <label className="form-check-label" htmlFor="termsCheckbox">
+//                   By clicking on Confirm My Reservation, I agree to accept the
+//                   Payment Terms & Cancellation Policy
+//                 </label>
+//               </div>
 
-                  <Form.Control
-                    type="tel"
-                    id="cardnum"
-                    onChange={(e) => setCardNum(e.target.value)}
-                    onBlur={validateCardNumber}
-                    size="sm"
-                  />
-                  <div className="text-danger">{cardNumError}</div>
-                </Col>
-              </Row>
+//               <Button
+//                 variant="primary"
+//                 type="button"
+//                 onClick={validateAndSubmit}
+//               >
+//                 Confirm My Reservation
+//               </Button>
+//             </form>
+//           ) : (
+//             <div>
+//               <h3>Payment Successful!</h3>
+//               <p>Your payment has been successfully processed.</p>
+//               {/* Additional content after successful payment */}
+//             </div>
+//           )}
+//         </Card.Body>
+//       </Card>
+//     </Container>
+//   );
+// };
 
-              <Row className="mb-3">
-                <Col>
-                  <div style={{ textAlign: "start" }}>
-                    <Form.Label>Expiry Date</Form.Label>
-                  </div>
-
-                  <Form.Control
-                    type="month"
-                    id="expiry"
-                    onChange={(e) => setExpiry(e.target.value)}
-                    onBlur={validateExpiryDate}
-                    size="sm"
-                  />
-                  <div className="text-danger">{expiryError}</div>
-                </Col>
-                <Col>
-                  <div style={{ textAlign: "start" }}>
-                    <Form.Label>CCV</Form.Label>
-                  </div>
-
-                  <Form.Control
-                    type="tel"
-                    id="ccv"
-                    onChange={(e) => setCcv(e.target.value)}
-                    onBlur={validateCCV}
-                    size="sm"
-                  />
-                  <div className="text-danger">{ccvError}</div>
-                </Col>
-              </Row>
-
-              <Form.Check
-                className="mb-4 ch"
-                type="checkbox"
-                id="form4Example4"
-                label="By clicking on Confirm My Reservation, I agree to accept the Payment Terms & Cancellation Policy"
-                checked
-              />
-
-              <div className="modal-footer mt-5 mb-2">
-                <Button className="btn button" onClick={handleSubmit}>
-                  Pay
-                </Button>
-              </div>
-            </Form>
-          </Card>
-        </Col>
-      </Row>
-
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Payment Successful</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Your payment was successful! Thank you for your purchase.</p>
-        </Modal.Body>
-      </Modal>
-    </Container>
-  );
-};
-
-export default CreditCardForm;
- */
-
+// export default CreditCardForm;
 
 
 import React, { useState } from "react";
-import "../App.css";
-import {
-  Form,
-  Button,
-  Container,
-  Row,
-  Col,
-  Modal,
-  Card,
-} from "react-bootstrap";
+import { Button, Card, Container, Row, Col } from "react-bootstrap";
 
 const CreditCardForm = () => {
-  const [formData, setFormData] = useState({
-    cardnum: "",
-    expiry: "",
-    ccv: "",
-  });
-  const [cardNumError, setCardNumError] = useState("");
+  const [cardnum, setCardnum] = useState("");
+  const [expiry, setExpiry] = useState("");
+  const [ccv, setCcv] = useState("");
+  const [cardnumError, setCardnumError] = useState("");
   const [expiryError, setExpiryError] = useState("");
   const [ccvError, setCcvError] = useState("");
-  const [showModal, setShowModal] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
 
-  const validateCardNumber = () => {
-    const cardNumRegex = /^\d{16}$/;
-    if (!formData.cardnum.trim()) {
-      setCardNumError("Card Number is required.");
-    } else if (!cardNumRegex.test(formData.cardnum)) {
-      setCardNumError("Invalid Card Number.");
+  const validateCardNumber = (value) => {
+    var cardNumRegex = /^\d{16}$/;
+
+    if (!value.trim()) {
+      return "Card Number is required.";
+    } else if (!cardNumRegex.test(value)) {
+      return "Invalid Card Number.";
     } else {
-      setCardNumError("");
+      return "";
     }
   };
 
-  const validateExpiryDate = () => {
-    const today = new Date();
-    today.setDate(1);
-
-    if (!formData.expiry.trim()) {
-      setExpiryError("Expiry Date is required.");
+  const validateExpiryDate = (value) => {
+    if (!value.trim()) {
+      return "Expiry Date is required.";
     } else {
-      const [inputYear, inputMonth] = formData.expiry.split("-");
-      const inputYearNum = parseInt(inputYear, 10);
-      const inputMonthNum = parseInt(inputMonth, 10);
+      const today = new Date();
+      const [inputYear, inputMonth] = value.split("-");
+      const inputDate = new Date(inputYear, inputMonth - 1);
 
-      if (
-        inputYearNum < today.getFullYear() ||
-        (inputYearNum === today.getFullYear() &&
-          inputMonthNum < today.getMonth() + 1)
-      ) {
-        setExpiryError("Expiry Date cannot be a past date.");
+      if (inputDate < today) {
+        return "Expiry Date cannot be a past date.";
       } else {
-        setExpiryError("");
+        return "";
       }
     }
   };
 
-  const validateCCV = () => {
-    const ccvRegex = /^\d{3}$/;
+  const validateCCV = (value) => {
+    var ccvRegex = /^\d{3}$/;
 
-    if (!formData.ccv) {
-      setCcvError("CCV is required.");
-    } else if (!ccvRegex.test(formData.ccv)) {
-      setCcvError("Invalid CCV. CCV must be a 3-digit number.");
+    if (!value.trim()) {
+      return "CCV is required.";
+    } else if (!ccvRegex.test(value)) {
+      return "Invalid CCV.";
     } else {
-      setCcvError("");
+      return "";
     }
   };
 
-  const handleSubmit = () => {
-    validateCardNumber();
-    validateExpiryDate();
-    validateCCV();
+  const handleCardnumChange = (e) => {
+    const value = e.target.value;
+    setCardnum(value);
+    setCardnumError(validateCardNumber(value));
+  };
 
-    if (!cardNumError && !expiryError && !ccvError) {
-      setShowModal(true);
-      setFormData({
-        cardnum: "",
-        expiry: "",
-        ccv: "",
-      });
-    } else {
-      setShowModal(false);
+  const handleExpiryChange = (e) => {
+    const value = e.target.value;
+    setExpiry(value);
+    setExpiryError(validateExpiryDate(value));
+  };
+
+  const handleCcvChange = (e) => {
+    const value = e.target.value;
+    setCcv(value);
+    setCcvError(validateCCV(value));
+  };
+
+  const validateAndSubmit = () => {
+    const cardnumValidationError = validateCardNumber(cardnum);
+    const expiryValidationError = validateExpiryDate(expiry);
+    const ccvValidationError = validateCCV(ccv);
+
+    setCardnumError(cardnumValidationError);
+    setExpiryError(expiryValidationError);
+    setCcvError(ccvValidationError);
+
+    if (
+      !cardnumValidationError &&
+      !expiryValidationError &&
+      !ccvValidationError
+    ) {
+      // If there are no validation errors, show payment success message
+      setPaymentSuccess(true);
     }
   };
 
   return (
-    <Container>
-      <Row className="justify-content-center mt-5">
-        <Col md={6}>
-          <Card className="p-4  mt-4">
-            <Form className="mt-4" onSubmit={handleSubmit}>
-              <Row className="mb-3">
-                <Col>
-                  <div style={{ textAlign: "start" }}>
-                    <Form.Label>Card Number</Form.Label>
-                  </div>
-
-                  <Form.Control
+    <Container className="my-5 mt-8" style={{ maxWidth: "600px" }}>
+      <Card style={{ width: "100%" }}>
+        <Card.Header>Enter Card Details</Card.Header>
+        <Card.Body>
+          {!paymentSuccess ? (
+            <form>
+              <div className="mb-3 d-flex justify-content-center">
+                <div className="text-center">
+                  <label className="form-label">
+                    Card Number
+                    <span className="star" style={{ color: "red" }}>
+                      *
+                    </span>
+                  </label>
+                  <input
                     type="tel"
-                    value={formData.cardnum}
-                    id="cardnum"
-                    onChange={(e) =>
-                      setFormData({ ...formData, cardnum: e.target.value })
-                    }
-                    onBlur={validateCardNumber}
-                    size="sm"
+                    className="form-control"
+                    value={cardnum}
+                    onChange={handleCardnumChange}
+                    style={{ width: "100%" }}
                   />
-                  <div className="text-danger">{cardNumError}</div>
-                </Col>
-              </Row>
-
-              <Row className="mb-3">
-                <Col>
-                  <div style={{ textAlign: "start" }}>
-                    <Form.Label>Expiry Date</Form.Label>
-                  </div>
-
-                  <Form.Control
-                    type="month"
-                    value={formData.expiry}
-                    id="expiry"
-                    onChange={(e) =>
-                      setFormData({ ...formData, expiry: e.target.value })
-                    }
-                    onBlur={validateExpiryDate}
-                    size="sm"
-                  />
-                  <div className="text-danger">{expiryError}</div>
-                </Col>
-                <Col>
-                  <div style={{ textAlign: "start" }}>
-                    <Form.Label>CCV</Form.Label>
-                  </div>
-
-                  <Form.Control
-                    type="tel"
-                    value={formData.ccv}
-                    id="ccv"
-                    onChange={(e) =>
-                      setFormData({ ...formData, ccv: e.target.value })
-                    }
-                    onBlur={validateCCV}
-                    size="sm"
-                  />
-                  <div className="text-danger">{ccvError}</div>
-                </Col>
-              </Row>
-
-              <Form.Check
-                className="mb-4 ch"
-                type="checkbox"
-                id="form4Example4"
-                label="By clicking on Confirm My Reservation, I agree to accept the Payment Terms & Cancellation Policy"
-                checked
-              />
-
-              <div className="modal-footer mt-5 mb-2">
-                <Button className="btn button" onClick={handleSubmit}>
-                  Pay
-                </Button>
+                  <div className="text-danger">{cardnumError}</div>
+                </div>
               </div>
-            </Form>
-          </Card>
-        </Col>
-      </Row>
+              <Row className="mb-3">
+                <Col xs={6}>
+                  <div className="mb-3">
+                    <label className="form-label">
+                      Expiry Date
+                      <span className="star" style={{ color: "red" }}>
+                        *
+                      </span>
+                    </label>
+                    <input
+                      type="month"
+                      className="form-control"
+                      value={expiry}
+                      onChange={handleExpiryChange}
+                      style={{ width: "100%" }}
+                    />
+                    <div className="text-danger">{expiryError}</div>
+                  </div>
+                </Col>
+                <Col xs={6}>
+                  <div className="mb-3">
+                    <label className="form-label">
+                      CVV
+                      <span className="star" style={{ color: "red" }}>
+                        *
+                      </span>
+                    </label>
+                    <input
+                      type="tel"
+                      className="form-control"
+                      value={ccv}
+                      onChange={handleCcvChange}
+                      style={{ width: "100%" }}
+                    />
+                    <div className="text-danger">{ccvError}</div>
+                  </div>
+                </Col>
+              </Row>
 
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Payment Successful</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Your payment was successful! Thank you for your purchase.</p>
-        </Modal.Body>
-      </Modal>
+              <div className="mb-3 form-check">
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id="termsCheckbox"
+                  checked
+                />
+                <label className="form-check-label" htmlFor="termsCheckbox">
+                  By clicking on Confirm My Reservation, I agree to accept the
+                  Payment Terms & Cancellation Policy
+                </label>
+              </div>
+
+              <Button
+                variant="primary"
+                type="button"
+                onClick={validateAndSubmit}
+              >
+                PAY
+              </Button>
+            </form>
+          ) : (
+            <div>
+              <h3>Payment Successful!</h3>
+              <p>Your payment has been successfully processed.</p>
+              {/* Additional content after successful payment */}
+            </div>
+          )}
+        </Card.Body>
+      </Card>
     </Container>
   );
 };

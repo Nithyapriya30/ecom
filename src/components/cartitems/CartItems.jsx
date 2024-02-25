@@ -5,7 +5,7 @@ import remove_icon from '../../Assets/images/img/cart_cross_icon.png'
 import { Link } from 'react-router-dom'
 
 const CartItems=()=> {
-    // const {getTotalCartAmount,all_product,cartItems,removeFromCart}=useContext(ShopContext);
+    
      const { getTotalCartAmount, all_product, cartItems, removeFromCart } = useContext(ShopContext);
 
     // Check if the cart is empty
@@ -27,12 +27,6 @@ const CartItems=()=> {
             <p>Remove</p>
         </div>
         <hr />
-        {/* <div>
-            <div className="cartitems-format">
-                <img src="" alt="" className='carticon-product-icon'/>
-
-            </div>
-        </div> */}
         {all_product.map((e)=>{
             if(cartItems[e.id]>0)
             {

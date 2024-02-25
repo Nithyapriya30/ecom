@@ -1,14 +1,14 @@
 import React from 'react'
 import AdminNav from './AdminNav'
-import ProductCard from './Productcard'
+import ProductCardCollection from '../NewCollections/NewCollection';
 
 function ProductManagement() {
   return (
     <div>
-        <AdminNav/>
-        <ProductCard/>
+      <AdminNav />
+      <ProductCardCollection />
     </div>
-  )
+  );
 }
 
 export default ProductManagement

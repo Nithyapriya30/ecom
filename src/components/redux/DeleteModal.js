@@ -9,7 +9,7 @@ const DeleteModal = ({ show, onHide, onConfirm }) => {
         <Modal.Header closeButton>
           <Modal.Title>Delete Product</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to delete the hall?</Modal.Body>
+        <Modal.Body>Are you sure you want to delete the product?</Modal.Body>
         <Modal.Footer>
           <Button
             className="btn me-2 btn-secondary"

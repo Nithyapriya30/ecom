@@ -7,7 +7,7 @@ function EditModal(props) {
   const { selectedProduct } = useSelector((state) => state.products);
   const [productData, setProductData] = useState({});
   const [errors, setErrors] = useState({});
-  const categories = ["Kids", "Womens", "Mens"];
+  const categories = ["Kids", "Womens", "Men"];
   useEffect(() => {
     if (selectedProduct && Object.keys(selectedProduct).length !== 0) {
       setProductData(selectedProduct);

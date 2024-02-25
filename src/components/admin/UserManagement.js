@@ -36,85 +36,90 @@ const UserManagement = () => {
   }, [dispatch]);
 
   return (
-    <Container>
-      <AdminNav/>
-      <h1 style={{ marginTop: "100px" }}>User Management</h1>
-      <div className="d-flex justify-content-end mb-3">
-        <Button
-          style={{ backgroundColor: "red", color: "white", border: "none" }}
-          onClick={() => setaddModalShow(true)}
-        >
-          Add user
-        </Button>
-      </div>
-      <Table responsive>
-        <thead>
-          <tr className="text-center">
-            <th style={{ backgroundColor: "#01114c", color: "white" }}>
-              SI.NO
-            </th>
-            <th style={{ backgroundColor: "#01114c", color: "white" }}>Name</th>
-            <th style={{ backgroundColor: "#01114c", color: "white" }}>
-              Email
-            </th>
-            <th style={{ backgroundColor: "#01114c", color: "white" }}>
-              Phone number
-            </th>
-          
-            <th style={{ backgroundColor: "#01114c", color: "white" }}>
-              Action
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {userData &&
-            userData.map((user, index) => {
-              return (
-                <tr className="text-center" key={user.id}>
-                  <td>{index + 1}</td>
-                  <td>{user.username}</td>
-                  <td>{user.email}</td>
-                  <td>{user.phonenumber}</td>
-              
-                  <td>
-                    <Button
-                      style={{ backgroundColor: "#01114c" }}
-                      className="mx-3"
-                      onClick={() => updateuser(user)}
-                    >
-                      <MdEdit />
-                    </Button>
-                    <Button
-                      style={{ backgroundColor: "#01114c" }}
-                      onClick={() => {
-                        setuserToDelete(user);
-                        setDeleteModalShow(true);
-                      }}
-                    >
-                      <FaRegTrashAlt
-                        style={{ backgroundColor: "#01114c", color: "white" }}
-                      />
-                    </Button>
-                  </td>
-                </tr>
-              );
-            })}
-        </tbody>
-      </Table>
+    <>
+      <AdminNav />
 
-      {/* Deletemodal */}
-      <DeleteModal
-        show={deleteModalShow}
-        onHide={() => {
-          setDeleteModalShow(false);
-          setuserToDelete(null);
-        }}
-        user={userToDelete}
-      />
+      <Container>
+        <h1 style={{ marginTop: "100px" }}>User Management</h1>
+        <div className="d-flex justify-content-end mb-3">
+          <Button
+            style={{ backgroundColor: "red", color: "white", border: "none" }}
+            onClick={() => setaddModalShow(true)}
+          >
+            Add user
+          </Button>
+        </div>
+        <Table responsive>
+          <thead>
+            <tr className="text-center">
+              <th style={{ backgroundColor: "#01114c", color: "white" }}>
+                SI.NO
+              </th>
+              <th style={{ backgroundColor: "#01114c", color: "white" }}>
+                Name
+              </th>
+              <th style={{ backgroundColor: "#01114c", color: "white" }}>
+                Email
+              </th>
+              <th style={{ backgroundColor: "#01114c", color: "white" }}>
+                Phone number
+              </th>
 
-      <UpdateModal show={modalShow} onHide={() => setModalShow(false)} />
-      <AddModal show={addmodalShow} onHide={() => setaddModalShow(false)} />
-    </Container>
+              <th style={{ backgroundColor: "#01114c", color: "white" }}>
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {userData &&
+              userData.map((user, index) => {
+                return (
+                  <tr className="text-center" key={user.id}>
+                    <td>{index + 1}</td>
+                    <td>{user.username}</td>
+                    <td>{user.email}</td>
+                    <td>{user.phonenumber}</td>
+
+                    <td>
+                      <Button
+                        style={{ backgroundColor: "#01114c" }}
+                        className="mx-3"
+                        onClick={() => updateuser(user)}
+                      >
+                        <MdEdit />
+                      </Button>
+                      <Button
+                        style={{ backgroundColor: "#01114c" }}
+                        onClick={() => {
+                          setuserToDelete(user);
+                          setDeleteModalShow(true);
+                        }}
+                      >
+                        <FaRegTrashAlt
+                          style={{ backgroundColor: "#01114c", color: "white" }}
+                        />
+                      </Button>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </Table>
+
+        {/* Deletemodal */}
+        <DeleteModal
+          show={deleteModalShow}
+          onHide={() => {
+            setDeleteModalShow(false);
+            setuserToDelete(null);
+          }}
+          user={userToDelete}
+        />
+
+        <UpdateModal show={modalShow} onHide={() => setModalShow(false)} />
+        <AddModal show={addmodalShow} onHide={() => setaddModalShow(false)} />
+      </Container>
+    </>
   );
 };
 

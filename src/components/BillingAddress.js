@@ -50,7 +50,7 @@ const BillingAddressPage = () => {
     if (!formData.lastName.trim()) {
       errors.lastName = "Last Name is required";
     }
-    if (!formData.country.trim() || formData.country === "1") {
+    if ( !formData.country.trim() || formData.country ===' ') {
       errors.country = "Please select a country";
     }
     if (!formData.address.trim()) {
@@ -69,6 +69,7 @@ const BillingAddressPage = () => {
     } else if (!isValidPhone(formData.phone)) {
       errors.phone = "Invalid phone number format";
     }
+
     return errors;
   };
 
@@ -84,16 +85,26 @@ const BillingAddressPage = () => {
 
   return (
     <>
-      <Container className="my-3">
+      <Container className="my-5">
         <Row className="justify-content-center align-items-center">
-          <Col md={6} className="mb-3">
-            <div className="p-3 p-lg-5 border">
+          <Col md={8} className="mb-3">
+            <div className="p-1 p-lg-2 border">
               <Form onSubmit={handleSubmit}>
-                <Row>
-                  <h2 className="h3 mb-3 text-black">Billing Details</h2>
+                <h2 className="h3 mb-5 text-black align-content-center">
+                  Billing Details
+                </h2>
+                <Row
+                  style={{
+                    textAlign: "start",
+                    paddingLeft: "10px",
+                    paddingBottom: "1.5rem",
+                  }}
+                >
                   <Col md={6}>
                     <Form.Group controlId="c_fname">
-                      <Form.Label>First Name *</Form.Label>
+                      <Form.Label>
+                        First Name <span style={{ color: "red" }}>*</span>
+                      </Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Enter First Name"
@@ -102,13 +113,17 @@ const BillingAddressPage = () => {
                         onChange={handleChange}
                         isInvalid={!!errors.firstName}
                       />
-                      
+
                       <Form.Control.Feedback type="invalid">
                         {errors.firstName}
                       </Form.Control.Feedback>
                     </Form.Group>
+                  </Col>
+                  <Col>
                     <Form.Group controlId="c_lname">
-                      <Form.Label>Last Name *</Form.Label>
+                      <Form.Label>
+                        Last Name <span style={{ color: "red" }}>*</span>
+                      </Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Enter Last Name"
@@ -123,10 +138,18 @@ const BillingAddressPage = () => {
                     </Form.Group>
                   </Col>
                 </Row>
-                <Row>
+                <Row
+                  style={{
+                    textAlign: "start",
+                    paddingLeft: "10px",
+                    paddingBottom: "1.5rem",
+                  }}
+                >
                   <Col md={6}>
                     <Form.Group controlId="c_country">
-                      <Form.Label>Country *</Form.Label>
+                      <Form.Label>
+                        Country {/* <span style={{ color: "red" }}>*</span> */}
+                      </Form.Label>
                       <Form.Control
                         as="select"
                         name="country"
@@ -134,23 +157,24 @@ const BillingAddressPage = () => {
                         onChange={handleChange}
                         isInvalid={!!errors.country}
                       >
-                        <option value="1">Select a country</option>
-                        <option value="2">Bangladesh</option>
-                        <option value="2">India</option>
-                        <option value="2">Indonesiah</option>
-                        <option value="2">Japan</option>
-                        <option value="2">Malaysia</option>
+                        <option value=' '>Select a country</option>
+                    {/*     <option value="2">Bangladesh</option> */}
+                        <option value="3">India</option>
+                       {/*  <option value="4">Indonesiah</option>
+                        <option value="5">Japan</option>
+                        <option value="6">Malaysia</option> */}
                       </Form.Control>
                       <Form.Control.Feedback type="invalid">
                         {errors.country}
                       </Form.Control.Feedback>
                     </Form.Group>
                   </Col>
-                </Row>
-                <Row>
+
                   <Col md={6}>
                     <Form.Group controlId="c_address">
-                      <Form.Label>Address *</Form.Label>
+                      <Form.Label>
+                        Address <span style={{ color: "red" }}>*</span>
+                      </Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Street address"
@@ -165,10 +189,18 @@ const BillingAddressPage = () => {
                     </Form.Group>
                   </Col>
                 </Row>
-                <Row>
+                <Row
+                  style={{
+                    textAlign: "start",
+                    paddingLeft: "10px",
+                    paddingBottom: "1.5rem",
+                  }}
+                >
                   <Col md={6}>
                     <Form.Group controlId="c_state_country">
-                      <Form.Label>State</Form.Label>
+                      <Form.Label>
+                        State <span style={{ color: "red" }}>*</span>{" "}
+                      </Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Enter State"
@@ -181,8 +213,12 @@ const BillingAddressPage = () => {
                         {errors.stateCountry}
                       </Form.Control.Feedback>
                     </Form.Group>
+                  </Col>
+                  <Col>
                     <Form.Group controlId="c_email_address">
-                      <Form.Label>Email Address *</Form.Label>
+                      <Form.Label>
+                        Email Address <span style={{ color: "red" }}>*</span>
+                      </Form.Label>
                       <Form.Control
                         type="email"
                         placeholder="Enter Email Address"
@@ -197,10 +233,18 @@ const BillingAddressPage = () => {
                     </Form.Group>
                   </Col>
                 </Row>
-                <Row>
+                <Row
+                  style={{
+                    textAlign: "start",
+                    paddingLeft: "10px",
+                    paddingBottom: "1.5rem",
+                  }}
+                >
                   <Col md={6}>
                     <Form.Group controlId="c_phone">
-                      <Form.Label>Phone *</Form.Label>
+                      <Form.Label>
+                        Phone <span style={{ color: "red" }}>*</span>
+                      </Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Enter Phone Number"
@@ -211,6 +255,22 @@ const BillingAddressPage = () => {
                       />
                       <Form.Control.Feedback type="invalid">
                         {errors.phone}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                  <Col md={6}>
+                    <Form.Group controlId="c_landmark">
+                      <Form.Label>Landmark</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Enter Landmark"
+                        name="landmark"
+                        value={formData.landmark}
+                        onChange={handleChange}
+                        isInvalid={!!errors.landmark}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.landmark}
                       </Form.Control.Feedback>
                     </Form.Group>
                   </Col>

@@ -1,172 +1,8 @@
-// import React from 'react';
-// import '../Assets/css/LoginSignup.css';
-// import { Link } from 'react-router-dom';
-
-// const LoginSignup = () => {
-//   return (
-//     <div className="loginsignup">
-//       <div className="loginsignup-container">
-//         <h1>Sign Up</h1>
-//         <div className="loginsignup-fields">
-//           <input type="text" placeholder="Your Name" />
-//           <input type="email" placeholder="Email Address" />
-//           <input type="password" placeholder="Password" />
-//         </div>
-//         <Link to='/'><button>Continue</button></Link>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default LoginSignup;
-
-
-
-
-
-
-
-
-
-// import React, { useState } from 'react';
-// import { Breadcrumb } from 'react-bootstrap'; // Add this import
-// import '../Assets/css/LoginSignup.css';
-// import { Link } from 'react-router-dom';
-
-// const LoginSignup = () => {
-//   const [formData, setFormData] = useState({
-//     name: '',
-//     email: '',
-//     password: ''
-//   });
-
-//   const [errors, setErrors] = useState({
-//     name: '',
-//     email: '',
-//     password: ''
-//   });
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData({ ...formData, [name]: value });
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     if (validateForm()) {
-//       // Form submission logic here
-//       console.log('Form submitted:', formData);
-//       // Redirect to home page
-//      window.location.href="/"
-//     } else {
-//       console.log('Form has errors. Please correct them.');
-//     }
-//   };
-
-//   const validateForm = () => {
-//     let isValid = true;
-//     const { name, email, password } = formData;
-//     const newErrors = {
-//       name: '',
-//       email: '',
-//       password: ''
-//     };
-
-//     // Name validation
-//     if (!name.trim()) {
-//       newErrors.name = 'Name is required';
-//       isValid = false;
-//     }
-
-//     // Email validation
-//     if (!email.trim()) {
-//       newErrors.email = 'Email is required';
-//       isValid = false;
-//     } else if (!isValidEmail(email)) {
-//       newErrors.email = 'Invalid email format';
-//       isValid = false;
-//     }
-
-//     // Password validation
-//     if (!password.trim()) {
-//       newErrors.password = 'Password is required';
-//       isValid = false;
-//     } else if (password.trim().length < 6) {
-//       newErrors.password = 'Password must be at least 6 characters';
-//       isValid = false;
-//     }
-
-//     setErrors(newErrors);
-//     return isValid;
-//   };
-
-//   const isValidEmail = (email) => {
-//     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//     return emailRegex.test(email);
-//   };
-
-//   return (
-//     <div>
-//       <Breadcrumb className="mb-4">
-//         <Breadcrumb.Item href="#" as={Link} to="/homepage" active>
-//           &nbsp;&nbsp;Home
-//         </Breadcrumb.Item>
-//       </Breadcrumb>
-//       <div className="loginsignup">
-        
-//         <div className="loginsignup-container">
-//           <h1>Sign Up</h1>
-//           <form onSubmit={handleSubmit}>
-//             <div className="loginsignup-fields">
-//               <input
-//                 type="text"
-//                 name="name"
-//                 placeholder="Your Name"
-//                 value={formData.name}
-//                 onChange={handleChange}
-//               />
-//               <div className="error-message">{errors.name}</div>
-//               <input
-//                 type="email"
-//                 name="email"
-//                 placeholder="Email Address"
-//                 value={formData.email}
-//                 onChange={handleChange}
-//               />
-//               <div className="error-message">{errors.email}</div>
-//               <input
-//                 type="password"
-//                 name="password"
-//                 placeholder="Password"
-//                 value={formData.password}
-//                 onChange={handleChange}
-//               />
-//               <div className="error-message">{errors.password}</div>
-//             </div>
-//             <button type="submit">Continue</button>
-//           </form>
-          
-//           <p>
-//             Already have an account? <Link to="/loginform">Login here</Link>
-//           </p>
-          
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default LoginSignup;
-
-
-
-
-
-
 import React, { useState } from 'react';
-import { Breadcrumb, Form } from 'react-bootstrap';
+import { Breadcrumb, Form, InputGroup } from 'react-bootstrap';
 import '../Assets/css/LoginSignup.css';
 import { Link } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { addUserToServer } from '../slice/ProfileSlice';
 import { useDispatch } from 'react-redux';
 
@@ -192,6 +28,13 @@ const LoginSignup = () => {
     photo: ''
   });
 
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -215,16 +58,14 @@ const LoginSignup = () => {
       console.log('Form submitted successfully');
       // Dispatch action to add user to server
       dispatch(addUserToServer({                   
-
         name: formData.name,
-        address:formData.address,
+        address: formData.address,
         mobile: formData.mobile,
-        state:formData.state,     
-        email:formData.email,
-        password:formData.password,
-        photo:formData.photo,
-        role:"customer"
-       
+        state: formData.state,     
+        email: formData.email,
+        password: formData.password,
+        photo: formData.photo,
+        role: "customer"
       }));
       // Reset form data
       setFormData({
@@ -262,25 +103,14 @@ const LoginSignup = () => {
         if (!/^\d+$/.test(value)) {
             return 'Mobile number should contain only numeric characters';
         }
-
-        // Add prefix validation if needed
-        // For example, if mobile numbers should start with a specific prefix
-        // if (!value.startsWith('+91')) {
-        //     return 'Mobile number should start with +91';
-        // }
     }
 
     return ''; // No errors
-};
+  };
 
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
-  };
-
-  const isValidMobile = (mobile) => {
-    const mobileRegex = /^\d{10}$/;
-    return mobileRegex.test(mobile);
   };
 
   return (
@@ -295,7 +125,7 @@ const LoginSignup = () => {
           <h2>Sign Up</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="name" style={{ textAlign: "start" }}>
-              <Form.Label >Name <span className="star text-danger">*</span></Form.Label>
+              <Form.Label>Name <span className="star text-danger">*</span></Form.Label>
               <Form.Control type="text" name="name" value={formData.name} onChange={handleChange} isInvalid={!!errors.name} />
               <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
             </Form.Group>
@@ -326,8 +156,21 @@ const LoginSignup = () => {
 
             <Form.Group className="mb-3" controlId="password" style={{ textAlign: "start" }}>
               <Form.Label>Password <span className="star text-danger">*</span></Form.Label>
-              <Form.Control type="password" name="password" value={formData.password} onChange={handleChange} isInvalid={!!errors.password} />
-              <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
+              <InputGroup>
+                <Form.Control 
+                  type={passwordVisible ? "text" : "password"} 
+                  name="password" 
+                  value={formData.password} 
+                  onChange={handleChange} 
+                  isInvalid={!!errors.password} 
+                />
+               <InputGroup.Text>
+  <span onClick={() => setPasswordVisible(!passwordVisible)}>
+    {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+  </span>
+</InputGroup.Text>
+                <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
+              </InputGroup>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="photo" style={{ textAlign: "start" }}>
@@ -336,7 +179,9 @@ const LoginSignup = () => {
               <Form.Control.Feedback type="invalid">{errors.photo}</Form.Control.Feedback>
             </Form.Group>
 
-            <button type="submit">Submit</button>
+           <div className="text-center">
+              <button type="submit">Submit</button>
+            </div>
           </Form>
         </div>
       </div>
